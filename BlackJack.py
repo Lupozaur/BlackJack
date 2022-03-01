@@ -168,6 +168,7 @@ def push():
     pass
 
 
+chips = Chips()
 while True:
     # Print an opening statement
     print('Welcome to BlackJack! Get as close to 21 as you can without going over!')
@@ -183,7 +184,6 @@ while True:
         dealer.add_card(deck.deal())
 
     # Set up the Player's chips
-    chips = Chips()
     players_chips = chips
 
     # Prompt the Player for their bet
@@ -227,7 +227,10 @@ while True:
         dealer_wins()
 
     # Inform Player of their chips total 
-    print(f'You have {chips.total} chips.')
+    print(f'You have {players_chips.total} chips.')
+    if players_chips.total == 0:
+        print('GAME OVER!')
+        break
     # Ask to play again
     replay = input('Do you want to play again Y or N? ').lower().startswith('y')
     if not replay:
