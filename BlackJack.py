@@ -165,6 +165,7 @@ def dealer_wins():
 
 
 def push():
+    print('We\'ve got a tie!'):
     pass
 
 
@@ -225,6 +226,8 @@ while True:
         dealer_busts()
     elif 21 > dealer.value > player.value:
         dealer_wins()
+    elif player.value == dealer.value:
+        push()
 
     # Inform Player of their chips total 
     print(f'You have {players_chips.total} chips.')
