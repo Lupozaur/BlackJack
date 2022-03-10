@@ -41,15 +41,15 @@ class Deck:
 
 class Hand:
     def __init__(self):
-        self.cards = []  # start with an empty list as we did in the Deck class
+        self.cards = []  # start with an empty list
         self.value = 0  # start with zero value
         self.aces = 0  # add an attribute to keep track of aces
 
     def add_card(self, card):
         self.cards.append(card)
+        self.value += card.value
         if card.rank == 'Ace':
             self.aces += 1
-        self.value += card.value
 
     def adjust_for_ace(self):
         for card in self.cards:
@@ -165,7 +165,7 @@ def dealer_wins():
 
 
 def push():
-    print('We\'ve got a tie!'):
+    print('We\'ve got a tie!')
     pass
 
 
@@ -208,7 +208,7 @@ while True:
             break
 
     # If Player hasn't busted, play Dealer's hand until Dealer reaches 17
-    if player.value < 21:
+    if player.value <= 21:
         while dealer.value < 17:
             dealer.add_card(deck.deal())
 
